@@ -1,24 +1,11 @@
 ## Description
 * This app will enable users to schedule appointments for their auto services.
-* It will allow them to store their maintenance logs for timely auto services.
+* It will allow them to log their maintenance information for timely auto services.
 
 ## Users will be able to select their car type and select the type service needed. 
 
 * List of all hyundai models. 
-	* Hyundai models
-		* Hyundai Accent
-		* Hyundai Azera
-		* Hyundai Elantra
-		* Hyundai Equus
-		* Hyundai Genesis AWD
-		* Hyundai Ioniq
-		* Hyundai Kona AWD
-		* Hyundai Palisade AWD
-		* Hyundai Santa Fe AWD
-		* Hyundai Sonata
-		* Hyundai Tucson AWD
-		* Hyundai Veloster
-		* Hyundai Venue
+	* Vehicles
 		
 	* Select which type of service
 		* Oil change
@@ -27,8 +14,20 @@
 
 
 ## Intended users
-Hyundai car owners
+8 Vehicle owners
 
-## External services
----
+### [User stories](user-stories.md)
+
+* A semi-truck driver who have to go on trips daily.
+
+* A teacher who does not have time for him/herself but teach during the day and grade assignments by night.
+
+* A ranch owner who lives outside of the city who have vehicles in need of service.
+
+* A handicap person who hates to be going back and forth.
+
+
+
+
+
 
