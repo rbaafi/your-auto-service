@@ -15,6 +15,7 @@
 
 ## Intended users
 * Vehicle owners Who wants to keep track of their vehicle maintenance.
+* Mechanics.
 
 ### [User stories](user-stories.md)
 
