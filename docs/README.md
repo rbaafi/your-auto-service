@@ -26,6 +26,8 @@
 
 * A handicap person who hates to be going back and forth.
 
+### [Wireframe diagram](wireframe.md)
+
 ### [Entity-Relationship Diagram](erd.md)
 
 
