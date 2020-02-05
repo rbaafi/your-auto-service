@@ -18,14 +18,6 @@
 
 ### [User stories](user-stories.md)
 
-* A semi-truck driver who have to go on trips daily will be able to manage the service for their vehicle.
-
-* A teacher who does not have time for him/herself but teach during the day and grade assignments by night will be able to manage the service for their vehicle.
-
-* A ranch owner who lives outside of the city who have vehicles in need of service will be able to manage the service for their vehicle.
-
-* A handicap person who hates to be going back and forth will be able to manage the service for their vehicle.
-
 ### [Wireframe diagram](wireframe.md)
 
 ### [Entity-Relationship Diagram](erd.md)
