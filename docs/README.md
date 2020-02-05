@@ -8,12 +8,10 @@
 ## Users will be able to select their car type and select the type service needed. 
 
 * List of all hyundai models. 
-	* Vehicles
-		
+	* Vehicles	
 	* Select which type of service
 		* Oil change
 		* Air filter change
-
 
 ## Intended users
 * Vehicle owners Who wants to keep track of their vehicle maintenance.
@@ -31,6 +29,8 @@
 ### [Wireframe diagram](wireframe.md)
 
 ### [Entity-Relationship Diagram](erd.md)
+
+#### The External Service for this app will be data preloaded.
 
 
 
