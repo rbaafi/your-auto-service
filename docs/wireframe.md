@@ -1,3 +1,3 @@
 # Wireframe diagram
 
-[![Wireframe diagram](wirefram.png)](wireframe.pdf)
+[![Wireframe diagram](wireframe.png)](wireframe.pdf)
