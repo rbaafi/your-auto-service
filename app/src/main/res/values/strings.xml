@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">Your Auto Service</string>
+  <string name="title_vehicle_list">Vehicles</string>
+  <string name="title_vehicle_detail">Vehicle Detail</string>
 </resources>
