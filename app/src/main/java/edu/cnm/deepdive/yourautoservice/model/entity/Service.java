@@ -31,5 +31,37 @@ public class Service {
 
   @ColumnInfo(name = "mileage", index = true)
   private long mileage;
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public long getCar() {
+    return car;
+  }
+
+  public void setCar(long car) {
+    this.car = car;
+  }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
+  public long getMileage() {
+    return mileage;
+  }
+
+  public void setMileage(long mileage) {
+    this.mileage = mileage;
+  }
 }
 

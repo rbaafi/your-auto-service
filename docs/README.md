@@ -11,7 +11,6 @@
 	* Vehicles	
 	* Select which type of service
 		* Oil change
-		* Air filter change
 
 ## Intended users
 * Vehicle owners Who wants to keep track of their vehicle maintenance.

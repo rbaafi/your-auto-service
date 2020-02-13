@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.yourautoservice.model.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -12,6 +13,7 @@ import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
+@Dao
 public interface ServiceDao {
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -26,7 +28,7 @@ public interface ServiceDao {
   @Delete
   Single<Integer> delete(Service... services);
 
-  @Query("SELECT * FROM Service")
-  LiveData<List<Car>> select();
+  @Query("SELECT * FROM Service WHERE car_id = :carId")
+  LiveData<List<Service>> select(long carId);
 
 }

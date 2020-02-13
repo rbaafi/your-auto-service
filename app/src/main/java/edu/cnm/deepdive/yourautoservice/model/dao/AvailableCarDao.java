@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.yourautoservice.model.dao;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -12,6 +13,7 @@ import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
 
+@Dao
 public interface AvailableCarDao {
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -27,6 +29,6 @@ public interface AvailableCarDao {
   Single<Integer> delete(Car... cars);
 
   @Query("SELECT * FROM AvailableCar ORDER BY make_id, model_id, year_id")
-  LiveData<List<Car>> select();
+  LiveData<List<AvailableCar>> select();
 
 }
