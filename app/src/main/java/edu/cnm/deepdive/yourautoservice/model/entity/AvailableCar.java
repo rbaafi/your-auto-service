@@ -11,13 +11,13 @@ public class AvailableCar {
   @PrimaryKey(autoGenerate = true)
   private long id;
 
-  @ColumnInfo(name = "make_id", index = true)
+  @ColumnInfo(index = true)
   private String make;
 
-  @ColumnInfo(name = "model_id", index = true)
+  @ColumnInfo(index = true)
   private String model;
 
-  @ColumnInfo(name = "year_id", index = true)
+  @ColumnInfo(index = true)
   private int year;
 
   public long getId() {

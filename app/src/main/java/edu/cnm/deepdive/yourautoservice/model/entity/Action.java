@@ -26,13 +26,13 @@ public class Action {
   @ColumnInfo(name = "service_id", index = true)
   private long service;
 
-  @ColumnInfo(name = "summary")
+  @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String summary;
 
-  @ColumnInfo(name = "description", index = true)
+  @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String description;
 
-  @ColumnInfo(name = "service_type", index = true)
+  @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String ServiceType;
 
   public long getId() {

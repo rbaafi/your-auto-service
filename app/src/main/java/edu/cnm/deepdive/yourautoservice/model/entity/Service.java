@@ -24,12 +24,12 @@ public class Service {
   private long id;
 
   @ColumnInfo(name = "car_id", index = true)
-  private long car;
+  private long carId;
 
-  @ColumnInfo(name = "date", index = true)
+  @ColumnInfo(index = true)
   private Date date;
 
-  @ColumnInfo(name = "mileage", index = true)
+  @ColumnInfo(index = true)
   private long mileage;
 
   public long getId() {
@@ -40,12 +40,12 @@ public class Service {
     this.id = id;
   }
 
-  public long getCar() {
-    return car;
+  public long getCarId() {
+    return carId;
   }
 
-  public void setCar(long car) {
-    this.car = car;
+  public void setCarId(long carId) {
+    this.carId = carId;
   }
 
   public Date getDate() {

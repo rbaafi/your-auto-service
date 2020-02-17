@@ -12,17 +12,17 @@ public class Car {
   @PrimaryKey(autoGenerate = true)
   private long id;
 
-  @ColumnInfo(name = "make_id", index = true)
+  @ColumnInfo (index = true)
   private String make;
 
-  @ColumnInfo(name = "model_id", index = true)
+  @ColumnInfo(index = true)
   private String model;
 
-  @ColumnInfo(name = "year_id", index = true)
+  @ColumnInfo(index = true)
   private int year;
 
-  @ColumnInfo(name = "date", index = true)
-  private Date date;
+  @ColumnInfo(index = true)
+  private Date acquisition;
 
   public long getId() {
     return id;
@@ -56,11 +56,11 @@ public class Car {
     this.year = year;
   }
 
-  public Date getDate() {
-    return date;
+  public Date getAcquisition() {
+    return acquisition;
   }
 
-  public void setDate(Date date) {
-    this.date = date;
+  public void setAcquisition(Date acquisition) {
+    this.acquisition = acquisition;
   }
 }
