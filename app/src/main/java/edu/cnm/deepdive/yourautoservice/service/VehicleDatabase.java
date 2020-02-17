@@ -22,7 +22,6 @@ import java.util.Date;
     version = 1,
     exportSchema = true
 )
-
 @TypeConverters({Converters.class})
 public abstract class VehicleDatabase extends RoomDatabase {
 

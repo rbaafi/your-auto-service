@@ -27,6 +27,6 @@ public interface CarDao {
   @Delete
   Single<Integer> delete(Car... cars);
 
-  @Query("SELECT * FROM Car ORDER BY make_id, model_id, year_id")
+  @Query("SELECT * FROM Car ORDER BY make, model, year")
   LiveData<List<Car>> select();
 }

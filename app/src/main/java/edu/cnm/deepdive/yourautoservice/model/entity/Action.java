@@ -26,14 +26,14 @@ public class Action {
   @ColumnInfo(name = "service_id", index = true)
   private long service;
 
-  @ColumnInfo(collate = ColumnInfo.NOCASE)
+  @ColumnInfo(collate = ColumnInfo.NOCASE, index = true)
   private String summary;
 
   @ColumnInfo(collate = ColumnInfo.NOCASE)
   private String description;
 
-  @ColumnInfo(collate = ColumnInfo.NOCASE)
-  private String ServiceType;
+  @ColumnInfo(collate = ColumnInfo.NOCASE, index = true)
+  private String serviceType;
 
   public long getId() {
     return id;
@@ -68,10 +68,10 @@ public class Action {
   }
 
   public String getServiceType() {
-    return ServiceType;
+    return serviceType;
   }
 
   public void setServiceType(String serviceType) {
-    ServiceType = serviceType;
+    this.serviceType = serviceType;
   }
 }
