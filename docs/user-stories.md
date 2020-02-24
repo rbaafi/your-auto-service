@@ -2,8 +2,8 @@
 
 * A semi-truck driver who do not have time to go wait at mechanic shop because he or she have to make trips daily will be able to schedule appointment for a preferred time and day.
 
-*  A teacher who does not keep track of his or her car service due mileage will be able to keep logs for their car.
+* Landscape business owners who wants to keep track of their vehicle maintenance because of the excessive miles added daily to their vehicle mileage driving from one customer's property to the other. 
 
-* A ranch owner who lives outside of the city will be able to set appointment to take his or her vehicle for service without having to commute back and forth to make trips easier.
+* Mechanics who don't want to rely on paper documents. They are able to view logs from users device.
 
-* A handicap person who hates to be going back and forth from the mechanic shop because there are cars in line to be serviced.
+* Uber and Lift driver who wants to prevent their vehicle motor from damaging because of the excessive miles added to their vehicle mileage.
