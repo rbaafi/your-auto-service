@@ -2,7 +2,7 @@
 
 #### Entity Classes
 
-* https://github.com/rbaafi/your-auto-service/blob/master/app/src/main/java/edu/cnm/deepdive/yourautoservice/model/entity/Action.java
+* [`Action.java`](https://github.com/rbaafi/your-auto-service/blob/master/app/src/main/java/edu/cnm/deepdive/yourautoservice/model/entity/Action.java)
 * https://github.com/rbaafi/your-auto-service/blob/master/app/src/main/java/edu/cnm/deepdive/yourautoservice/model/entity/AvailableCar.java
 * https://github.com/rbaafi/your-auto-service/blob/master/app/src/main/java/edu/cnm/deepdive/yourautoservice/model/entity/Car.java
 * https://github.com/rbaafi/your-auto-service/blob/master/app/src/main/java/edu/cnm/deepdive/yourautoservice/model/entity/Service.java
