@@ -22,9 +22,6 @@ public interface AvailableCarDao {
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   Single<List<Long>> insert(Collection<Car> cars);
 
-  @Update
-  Single<Integer> update(AvailableCar availableCar);
-
   @Delete
   Single<Integer> delete(Car... cars);
 

@@ -26,5 +26,3 @@
 * https://github.com/rbaafi/your-auto-service/blob/master/app/src/main/java/edu/cnm/deepdive/yourautoservice/model/repository/ServiceRepository.java
 
 #### [Database description language](ddl.md)
-
-

@@ -8,8 +8,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.yourautoservice.model.entity.Action;
-import edu.cnm.deepdive.yourautoservice.model.entity.Car;
-import edu.cnm.deepdive.yourautoservice.model.entity.Service;
 import io.reactivex.Single;
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +27,7 @@ public interface ActionDao {
   @Delete
   Single<Integer> delete(Action... Action);
 
-  @Query("SELECT * FROM 'Action'")
+  @Query("SELECT * FROM `Action`")
   LiveData<List<Action>> select();
 
 }
