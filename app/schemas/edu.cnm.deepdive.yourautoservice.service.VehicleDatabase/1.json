@@ -1,0 +1,310 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "b7c7349d5fdb8cf2e0d869f9ab3179b6",
+    "entities": [
+      {
+        "tableName": "Car",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`car_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `make` TEXT, `model` TEXT, `year` INTEGER NOT NULL, `acquisition` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "car_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "make",
+            "columnName": "make",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "model",
+            "columnName": "model",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "acquisition",
+            "columnName": "acquisition",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "car_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Car_make",
+            "unique": false,
+            "columnNames": [
+              "make"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Car_make` ON `${TABLE_NAME}` (`make`)"
+          },
+          {
+            "name": "index_Car_model",
+            "unique": false,
+            "columnNames": [
+              "model"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Car_model` ON `${TABLE_NAME}` (`model`)"
+          },
+          {
+            "name": "index_Car_year",
+            "unique": false,
+            "columnNames": [
+              "year"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Car_year` ON `${TABLE_NAME}` (`year`)"
+          },
+          {
+            "name": "index_Car_acquisition",
+            "unique": false,
+            "columnNames": [
+              "acquisition"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Car_acquisition` ON `${TABLE_NAME}` (`acquisition`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Action",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`action_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `service_id` INTEGER NOT NULL, `summary` TEXT COLLATE NOCASE, `description` TEXT COLLATE NOCASE, `serviceType` TEXT COLLATE NOCASE, FOREIGN KEY(`service_id`) REFERENCES `Service`(`service_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "action_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "service",
+            "columnName": "service_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "summary",
+            "columnName": "summary",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "serviceType",
+            "columnName": "serviceType",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "action_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Action_service_id",
+            "unique": false,
+            "columnNames": [
+              "service_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Action_service_id` ON `${TABLE_NAME}` (`service_id`)"
+          },
+          {
+            "name": "index_Action_summary",
+            "unique": false,
+            "columnNames": [
+              "summary"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Action_summary` ON `${TABLE_NAME}` (`summary`)"
+          },
+          {
+            "name": "index_Action_serviceType",
+            "unique": false,
+            "columnNames": [
+              "serviceType"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Action_serviceType` ON `${TABLE_NAME}` (`serviceType`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Service",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "service_id"
+            ],
+            "referencedColumns": [
+              "service_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "AvailableCar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`available_car_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `make` TEXT, `model` TEXT, `year` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "available_car_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "make",
+            "columnName": "make",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "model",
+            "columnName": "model",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "year",
+            "columnName": "year",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "available_car_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_AvailableCar_make",
+            "unique": false,
+            "columnNames": [
+              "make"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_AvailableCar_make` ON `${TABLE_NAME}` (`make`)"
+          },
+          {
+            "name": "index_AvailableCar_model",
+            "unique": false,
+            "columnNames": [
+              "model"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_AvailableCar_model` ON `${TABLE_NAME}` (`model`)"
+          },
+          {
+            "name": "index_AvailableCar_year",
+            "unique": false,
+            "columnNames": [
+              "year"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_AvailableCar_year` ON `${TABLE_NAME}` (`year`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Service",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`service_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `car_id` INTEGER NOT NULL, `date` INTEGER, `mileage` INTEGER NOT NULL, FOREIGN KEY(`car_id`) REFERENCES `Car`(`car_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "service_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "carId",
+            "columnName": "car_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mileage",
+            "columnName": "mileage",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "service_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Service_car_id",
+            "unique": false,
+            "columnNames": [
+              "car_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Service_car_id` ON `${TABLE_NAME}` (`car_id`)"
+          },
+          {
+            "name": "index_Service_date",
+            "unique": false,
+            "columnNames": [
+              "date"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Service_date` ON `${TABLE_NAME}` (`date`)"
+          },
+          {
+            "name": "index_Service_mileage",
+            "unique": false,
+            "columnNames": [
+              "mileage"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Service_mileage` ON `${TABLE_NAME}` (`mileage`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Car",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "car_id"
+            ],
+            "referencedColumns": [
+              "car_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b7c7349d5fdb8cf2e0d869f9ab3179b6')"
+    ]
+  }
+}
