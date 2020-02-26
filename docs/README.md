@@ -28,7 +28,7 @@
 ### [Data Model Implementation](model-implementation.md)
 
 #### The External Service for this app will be data preloaded.
-* The will contain data intput from users. No external service needed.
+* [External Service](https://www.carqueryapi.com/documentation/)
 
 
 
