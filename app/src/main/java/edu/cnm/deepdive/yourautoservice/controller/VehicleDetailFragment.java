@@ -2,6 +2,7 @@ package edu.cnm.deepdive.yourautoservice.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.EditText;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,17 +11,25 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import edu.cnm.deepdive.yourautoservice.R;
 import edu.cnm.deepdive.yourautoservice.controller.dummy.DummyContent;
+import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 
 /**
  * A fragment representing a single Vehicle detail screen. This fragment is either contained in a
  * {@link VehicleListActivity} in two-pane mode (on tablets) or a {@link VehicleDetailActivity} on
  * handsets.
  */
-public class VehicleDetailFragment extends Fragment {
+public class VehicleDetailFragment<MainViewModel> extends Fragment {
 
-  /**
-   * The fragment argument representing the item ID that this fragment represents.
-   */
+  private static final String ID_KEY = "id";
+
+  private long id;
+  private View view;
+  private EditText subject;
+  private EditText text;
+  private Car note;
+  private MainViewModel viewModel;
+
+
   public static final String ARG_ITEM_ID = "item_id";
 
   /**
