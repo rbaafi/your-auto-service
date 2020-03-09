@@ -13,14 +13,14 @@ public class MainViewModel extends AndroidViewModel {
 
   private CarRepository repository;
   private MutableLiveData<Car> note;
-  private MutableLiveData<Throwable> throwable;
+  private MutableLiveData<Car> throwable;
   // TODO Declare and use a CompositeDisposable
 
   public MainViewModel(@NonNull Application application) {
     super(application);
     repository = new CarRepository();
-    car = new MutableLiveData<>();
-    throwable = new MutableLiveData<>();
+    LiveData<Object> car = new MutableLiveData<>();
+    throwable = new MutableLiveData<Car>();
   }
 
   public LiveData<List<Car>> getAll() {
@@ -29,38 +29,27 @@ public class MainViewModel extends AndroidViewModel {
   }
 
   public LiveData<Car> getNote() {
+    LiveData<Car> car = new MutableLiveData<>();
     return car;
   }
 
-  public LiveData<Throwable> getThrowable() {
+  public LiveData<Car> getThrowable() {
     return throwable;
   }
 
   public void setNoteId(long id) {
     throwable.setValue(null);
-    repository.get(id)
-        .subscribe(
-            note::postValue,
-            throwable::postValue
-        );
+    repository.get(id);
   }
 
-  public void save(Note note) {
-    throwable.setValue(null);
-    repository.save(note)
-        .subscribe(
-            () -> {},
-            throwable::postValue
-        );
+  public void save(Car car) {
+    throwable.setValue(car);
+    repository.save(car);
   }
 
-  public void remove(Note note) {
-    throwable.setValue(null);
-    repository.remove(note)
-        .subscribe(
-            () -> {},
-            throwable::postValue
-        );
+  public void remove(Car car) {
+    throwable.setValue(car);
+    repository.remove(car);
   }
 
 

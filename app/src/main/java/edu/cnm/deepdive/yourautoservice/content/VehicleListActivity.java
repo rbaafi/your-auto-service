@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.yourautoservice.controller;
+package edu.cnm.deepdive.yourautoservice.content;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import edu.cnm.deepdive.yourautoservice.R;
 
-import edu.cnm.deepdive.yourautoservice.controller.dummy.DummyContent;
-
+import edu.cnm.deepdive.yourautoservice.content.CarContent.CarItem;
 import java.util.List;
 
 /**
@@ -64,19 +63,19 @@ public class VehicleListActivity extends AppCompatActivity {
   }
 
   private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-    recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+    recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, CarContent.ITEMS, mTwoPane));
   }
 
   public static class SimpleItemRecyclerViewAdapter
       extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
     private final VehicleListActivity mParentActivity;
-    private final List<DummyContent.DummyItem> mValues;
+    private final List<CarItem> mValues;
     private final boolean mTwoPane;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+        CarItem item = (CarItem) view.getTag();
         if (mTwoPane) {
           Bundle arguments = new Bundle();
           arguments.putString(VehicleDetailFragment.ARG_ITEM_ID, item.id);
@@ -96,7 +95,7 @@ public class VehicleListActivity extends AppCompatActivity {
     };
 
     SimpleItemRecyclerViewAdapter(VehicleListActivity parent,
-        List<DummyContent.DummyItem> items,
+        List<CarItem> items,
         boolean twoPane) {
       mValues = items;
       mParentActivity = parent;

@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.yourautoservice.controller;
+package edu.cnm.deepdive.yourautoservice.content;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import edu.cnm.deepdive.yourautoservice.R;
-import edu.cnm.deepdive.yourautoservice.controller.dummy.DummyContent;
+import edu.cnm.deepdive.yourautoservice.content.CarContent.CarItem;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 
 /**
@@ -35,7 +35,7 @@ public class VehicleDetailFragment<MainViewModel> extends Fragment {
   /**
    * The dummy content this fragment is presenting.
    */
-  private DummyContent.DummyItem mItem;
+  private CarItem mItem;
 
   /**
    * Mandatory empty constructor for the fragment manager to instantiate the fragment (e.g. upon
@@ -52,7 +52,7 @@ public class VehicleDetailFragment<MainViewModel> extends Fragment {
       // Load the dummy content specified by the fragment
       // arguments. In a real-world scenario, use a Loader
       // to load content from a content provider.
-      mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+      mItem = CarContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
       Activity activity = this.getActivity();
       CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity

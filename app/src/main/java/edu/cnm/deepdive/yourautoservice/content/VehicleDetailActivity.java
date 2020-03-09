@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.yourautoservice.controller;
+package edu.cnm.deepdive.yourautoservice.content;
 
 import android.content.Intent;
 import android.os.Bundle;

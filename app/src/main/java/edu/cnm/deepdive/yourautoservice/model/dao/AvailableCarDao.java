@@ -28,4 +28,10 @@ public interface AvailableCarDao {
   @Query("SELECT * FROM AvailableCar ORDER BY make, model, year")
   LiveData<List<AvailableCar>> select();
 
+  @Query("SELECT DISTINCT make FROM AvailableCar ORDER BY make")
+  LiveData<List<String>> selectMakes();
+
+  @Query("SELECT DISTINCT model FROM AvailableCar  WHERE make = :make ORDER BY model")
+  LiveData<List<String>> selectModels(String make);
+
 }
