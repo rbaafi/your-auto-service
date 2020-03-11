@@ -46,9 +46,7 @@ public class VehicleRecyclerAdapter
     }
   };
 
-  public VehicleRecyclerAdapter(VehicleListActivity parent,
-      List<Car> items,
-      boolean twoPane) {
+  public VehicleRecyclerAdapter(VehicleListActivity parent, List<Car> items, boolean twoPane) {
     cars = items;
     mParentActivity = parent;
     mTwoPane = twoPane;

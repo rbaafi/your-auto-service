@@ -9,16 +9,16 @@ import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.model.repository.CarRepository;
 import java.util.List;
 
-public class MainViewModel extends AndroidViewModel {
+public class VehicleViewModel extends AndroidViewModel {
 
   private CarRepository repository;
   private MutableLiveData<Car> note;
   private MutableLiveData<Car> throwable;
   // TODO Declare and use a CompositeDisposable
 
-  public MainViewModel(@NonNull Application application) {
+  public VehicleViewModel(@NonNull Application application) {
     super(application);
-    repository = new CarRepository();
+    repository = new CarRepository(application);
     LiveData<Object> car = new MutableLiveData<>();
     throwable = new MutableLiveData<Car>();
   }
@@ -53,4 +53,7 @@ public class MainViewModel extends AndroidViewModel {
   }
 
 
+  public LiveData<List<Car>> getCars() {
+    return repository.getAll();
+  }
 }

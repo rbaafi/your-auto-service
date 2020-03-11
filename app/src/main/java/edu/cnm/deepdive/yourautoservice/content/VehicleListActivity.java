@@ -3,6 +3,7 @@ package edu.cnm.deepdive.yourautoservice.content;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,7 +11,11 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 import edu.cnm.deepdive.yourautoservice.R;
 
+import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter;
+import edu.cnm.deepdive.yourautoservice.viewmodel.VehicleViewModel;
+import java.text.DateFormat;
+import java.util.List;
 
 /**
  * An activity representing a list of Vehicles. This activity has different presentations for
@@ -51,13 +56,12 @@ public class VehicleListActivity extends AppCompatActivity {
       mTwoPane = true;
     }
 
-    View recyclerView = findViewById(R.id.vehicle_list);
-    assert recyclerView != null;
-    setupRecyclerView((RecyclerView) recyclerView);
-  }
-
-  private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-    recyclerView.setAdapter(new VehicleRecyclerAdapter(this, CarContent.ITEMS, mTwoPane));
+    RecyclerView recyclerView = findViewById(R.id.vehicle_list);
+    VehicleViewModel viewModel = new ViewModelProvider(this).get(VehicleViewModel.class);
+    viewModel.getCars().observe(this, (cars) -> {
+      VehicleRecyclerAdapter adapter = new VehicleRecyclerAdapter(this, cars, mTwoPane);
+      recyclerView.setAdapter(adapter);
+    });
   }
 
 }
