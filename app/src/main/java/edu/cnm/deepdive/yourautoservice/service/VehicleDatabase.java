@@ -2,6 +2,7 @@ package edu.cnm.deepdive.yourautoservice.service;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -19,6 +20,7 @@ import edu.cnm.deepdive.yourautoservice.model.entity.AvailableCar;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.model.entity.Service;
 import edu.cnm.deepdive.yourautoservice.service.VehicleDatabase.Converters;
+import io.reactivex.schedulers.Schedulers;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -98,14 +100,17 @@ public abstract class VehicleDatabase extends RoomDatabase {
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
         List<AvailableCar> cars = new LinkedList<>();
         for (CSVRecord record : records) {
+          Log.d(getClass().getName(), record.toString());
           AvailableCar car = new AvailableCar();
           car.setMake(record.get("make"));
           car.setModel(record.get("model"));
           car.setYear(Integer.parseInt(record.get("year")));
           cars.add(car);
         }
-        VehicleDatabase.getInstance().getAvailableCarDao().insert((AvailableCar) cars);
-      } catch (IOException e) {
+        VehicleDatabase.getInstance().getAvailableCarDao().insert(cars)
+            .subscribeOn(Schedulers.io())
+            .subscribe();
+      } catch (Exception e) {
         throw new RuntimeException(e);
       }
     }

@@ -1,17 +1,12 @@
 package edu.cnm.deepdive.yourautoservice.view;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.yourautoservice.R;
-import edu.cnm.deepdive.yourautoservice.controller.CarContent.CarItem;
-import edu.cnm.deepdive.yourautoservice.controller.VehicleDetailActivity;
-import edu.cnm.deepdive.yourautoservice.controller.VehicleDetailFragment;
 import edu.cnm.deepdive.yourautoservice.controller.VehicleListActivity;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter.MyViewHolder;
@@ -59,6 +54,7 @@ public class VehicleRecyclerAdapter
   }
 
   @Override
+  @NonNull
   public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
         .inflate(R.layout.vehicle_list_content, parent, false);

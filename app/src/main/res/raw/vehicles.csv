@@ -292,7 +292,6 @@ Toyota,4Runner 2WD,1993
 Chevrolet,Blazer 1500 4WD,1993
 Chevrolet,Suburban 1500 4WD,1993
 Chevrolet,S10 Blazer 4WD,1993
- Inc.",Funeral Coach,1985
 Nissan,Pathfinder 4WD,1993
 Chrysler,Town and Country 4WD,1993
 Dodge,Caravan/Grand Caravan 4WD,1993
@@ -323,7 +322,6 @@ Mitsubishi,Montero,1993
 Mazda,MPV 4x4,1993
 Mazda,Navajo,1993
 Mazda,Navajo 4x4,1993
- Inc",Pas-Typhoon,1993
 Plymouth,Voyager/Grand Voyager 4WD,1993
 Subaru,Loyale AWD,1993
 GMC,S15 Jimmy 2WD,1985
@@ -9857,12 +9855,6 @@ Saturn,Astra 4DR Hatchback,2008
 Chevrolet,K10 Pickup 4WD,1986
 Pontiac,G8,2008
 Infiniti,EX35,2008
- LP",Foose F150 Regular Cab 2WD,2008
- LP",Foose F150 Super Cab 2WD,2008
- LP",Foose F150 Super Crew 2WD,2008
- LP",Foose F150 Regular Cab 4WD,2008
- LP",Foose F150 Super Cab 4WD,2008
- LP",Foose F150 Super Crew 4WD,2008
 Jaguar,XJS Convertible,1995
 Chevrolet,K10 Pickup 4WD,1986
 Buick,LeSabre,1996
@@ -21754,7 +21746,7 @@ BMW,i3s (94Ah),2018
 Volkswagen,Golf,2018
 Volkswagen,Golf SportWagen,2018
 Volkswagen,Golf SportWagen 4motion,2018
-"Metris (Cargo Van, LWB)",2018
+Mercedes-Benz,"Metris (Cargo Van, LWB)",2018
 Dodge,Caravan/Grand Caravan/Ram Van 2WD,1987
 Nissan,Leaf,2018
 Jeep,Cherokee FWD,2019
@@ -22734,7 +22726,7 @@ Lincoln,Continental  AWD,2019
 Mercedes-Benz,S560,2019
 Mercedes-Benz,Metris (Passenger Van),2019
 Mercedes-Benz,Metris (Cargo Van),2019
-"Metris (Cargo Van, LWB)",2019
+Mercedes-Benz,"Metris (Cargo Van, LWB)",2019
 Dodge,Grand Caravan,2019
 Ford,Escape FWD FFV,2019
 Ford,EcoSport FWD,2019
@@ -23729,10 +23721,10 @@ Porsche,Panamera Turbo ST,2020
 Audi,80/90,1988
 Mercedes-Benz,Metris (Passenger Van),2020
 Mercedes-Benz,Metris (Cargo Van),2020
-"Metris (Cargo Van, LWB)",2020
+Mercedes-Benz,"Metris (Cargo Van, LWB)",2020
 Mercedes-Benz,Metris (Passenger Van),2020
 Mercedes-Benz,Metris (Cargo Van),2020
-"Metris (Cargo Van, LWB)",2020
+Mercedes-Benz,"Metris (Cargo Van, LWB)",2020
 Ram,Promaster City,2020
 Ford,Explorer HEV RWD,2020
 Toyota,4Runner 2WD,2020
@@ -24528,7 +24520,6 @@ Chevrolet,Caprice,1988
 CX Automotive,CX 25 Prestige,1988
 Chrysler,Newport/Fifth Avenue,1985
 Ford,LTD Crown Victoria,1988
- Inc.",W-126/4 Series,1988
 Lincoln,Continental,1988
 Mercury,Grand Marquis,1988
 Lincoln,Town Car,1988
@@ -26431,7 +26422,6 @@ Mitsubishi,Truck 2WD,1991
 Ford,Ranger Pickup 4WD,1991
 Ford,F150 Pickup 2WD,1985
 Ford,Ranger Pickup 4WD,1991
- Inc",Pas-Syclone,1991
 Chevrolet,C1500 Pickup 2WD,1991
 Ford,F150 Pickup 2WD,1985
 Chevrolet,C1500 Pickup 2WD,1991

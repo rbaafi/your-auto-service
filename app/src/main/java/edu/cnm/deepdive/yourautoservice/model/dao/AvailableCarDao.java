@@ -20,10 +20,10 @@ public interface AvailableCarDao {
   Single<Long> insert(AvailableCar availableCar);
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)
-  Single<List<Long>> insert(Collection<Car> cars);
+  Single<List<Long>> insert(Collection<AvailableCar> cars);
 
   @Delete
-  Single<Integer> delete(Car... cars);
+  Single<Integer> delete(AvailableCar... cars);
 
   @Query("SELECT * FROM AvailableCar ORDER BY make, model, year")
   LiveData<List<AvailableCar>> select();
