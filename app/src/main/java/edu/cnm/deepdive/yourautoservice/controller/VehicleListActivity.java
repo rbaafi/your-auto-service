@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.yourautoservice.controller;
 
 import android.os.Bundle;
+import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +34,9 @@ public class VehicleListActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_vehicle_list);
 
+    Spinner spinner = findViewById(R.id.vehicle_list);
+
+
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     toolbar.setTitle(getTitle());
@@ -59,7 +63,8 @@ public class VehicleListActivity extends AppCompatActivity {
     RecyclerView recyclerView = findViewById(R.id.vehicle_list);
     VehicleViewModel viewModel = new ViewModelProvider(this).get(VehicleViewModel.class);
     viewModel.getCars().observe(this, (cars) -> {
-      VehicleRecyclerAdapter adapter = new VehicleRecyclerAdapter(this, cars, mTwoPane);
+      VehicleRecyclerAdapter adapter =
+          new VehicleRecyclerAdapter(this, (v, car, pos) -> {}, cars, mTwoPane);
       recyclerView.setAdapter(adapter);
     });
   }

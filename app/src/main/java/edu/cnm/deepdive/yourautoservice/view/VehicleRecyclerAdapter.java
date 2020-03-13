@@ -21,7 +21,7 @@ import java.util.List;
 public class VehicleRecyclerAdapter
     extends RecyclerView.Adapter<MyViewHolder> {
 
-  private OnClickListener listener;
+  private final OnClickListener listener;
   private final VehicleListActivity mParentActivity;
   private final List<Car> cars;
   private final DateFormat dateFormat;
@@ -50,9 +50,10 @@ public class VehicleRecyclerAdapter
 //  };
 
   public VehicleRecyclerAdapter(VehicleListActivity parent,
-      OnClickListener listener, List<Car> items, boolean twoPane) {
-    cars = items;
+      OnClickListener listener, List<Car> cars, boolean twoPane) {
+    this.cars = cars;
     mParentActivity = parent;
+    this.listener = listener;
     mTwoPane = twoPane;
     dateFormat = android.text.format.DateFormat.getMediumDateFormat(parent);
   }
@@ -61,7 +62,7 @@ public class VehicleRecyclerAdapter
   public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
         .inflate(R.layout.vehicle_list_content, parent, false);
-    return new MyViewHolder(view, dateFormat);
+    return new MyViewHolder(view);
   }
 
   @Override
@@ -80,22 +81,20 @@ public class VehicleRecyclerAdapter
     final TextView model;
     final TextView year;
     final TextView date;
-    final DateFormat format;
 
-    private MyViewHolder(View view, DateFormat format) {
+    private MyViewHolder(View view) {
       super(view);
       make = (TextView) view.findViewById(R.id.make);
       model = (TextView) view.findViewById(R.id.model);
       year = (TextView) view.findViewById(R.id.year);
       date = (TextView) view.findViewById(R.id.date);
-      this.format = format;
     }
 
     private void bind(int position, Car car) {
       make.setText(car.getMake());
       model.setText(car.getModel());
       year.setText(Integer.toString(car.getYear()));
-      date.setText(format.format(car.getAcquisition()));
+      date.setText(dateFormat.format(car.getAcquisition()));
       itemView.setOnClickListener((v) -> listener.onClick(v, car,  position));
 
     }
