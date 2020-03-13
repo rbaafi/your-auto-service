@@ -9,44 +9,48 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.yourautoservice.R;
-import edu.cnm.deepdive.yourautoservice.content.CarContent.CarItem;
-import edu.cnm.deepdive.yourautoservice.content.VehicleDetailActivity;
-import edu.cnm.deepdive.yourautoservice.content.VehicleDetailFragment;
-import edu.cnm.deepdive.yourautoservice.content.VehicleListActivity;
+import edu.cnm.deepdive.yourautoservice.controller.CarContent.CarItem;
+import edu.cnm.deepdive.yourautoservice.controller.VehicleDetailActivity;
+import edu.cnm.deepdive.yourautoservice.controller.VehicleDetailFragment;
+import edu.cnm.deepdive.yourautoservice.controller.VehicleListActivity;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
+import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter.MyViewHolder;
 import java.text.DateFormat;
 import java.util.List;
 
 public class VehicleRecyclerAdapter
-    extends RecyclerView.Adapter<VehicleRecyclerAdapter.ViewHolder> {
+    extends RecyclerView.Adapter<MyViewHolder> {
 
+  private OnClickListener listener;
   private final VehicleListActivity mParentActivity;
   private final List<Car> cars;
   private final DateFormat dateFormat;
   private final boolean mTwoPane;
-  private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-      CarItem item = (CarItem) view.getTag();
-      if (mTwoPane) {
-        Bundle arguments = new Bundle();
-        arguments.putString(VehicleDetailFragment.ARG_ITEM_ID, item.id);
-        VehicleDetailFragment fragment = new VehicleDetailFragment();
-        fragment.setArguments(arguments);
-        mParentActivity.getSupportFragmentManager().beginTransaction()
-            .replace(R.id.vehicle_detail_container, fragment)
-            .commit();
-      } else {
-        Context context = view.getContext();
-        Intent intent = new Intent(context, VehicleDetailActivity.class);
-        intent.putExtra(VehicleDetailFragment.ARG_ITEM_ID, item.id);
+//  private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
 
-        context.startActivity(intent);
-      }
-    }
-  };
+//    @Override
+//    public void onClick(View view) {
+//      CarItem item = (CarItem) view.getTag();
+//      if (mTwoPane) {
+//        Bundle arguments = new Bundle();
+//        arguments.putString(VehicleDetailFragment.ARG_ITEM_ID, item.id);
+//        VehicleDetailFragment fragment = new VehicleDetailFragment();
+//        fragment.setArguments(arguments);
+//        mParentActivity.getSupportFragmentManager().beginTransaction()
+//            .replace(R.id.vehicle_detail_container, fragment)
+//            .commit();
+//      } else {
+//        Context context = view.getContext();
+//        Intent intent = new Intent(context, VehicleDetailActivity.class);
+//        intent.putExtra(VehicleDetailFragment.ARG_ITEM_ID, item.id);
+//
+//        context.startActivity(intent);
+//      }
+//    }
+//  };
 
-  public VehicleRecyclerAdapter(VehicleListActivity parent, List<Car> items, boolean twoPane) {
+  public VehicleRecyclerAdapter(VehicleListActivity parent,
+      OnClickListener listener, List<Car> items, boolean twoPane) {
     cars = items;
     mParentActivity = parent;
     mTwoPane = twoPane;
@@ -54,14 +58,14 @@ public class VehicleRecyclerAdapter
   }
 
   @Override
-  public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext())
         .inflate(R.layout.vehicle_list_content, parent, false);
-    return new ViewHolder(view, dateFormat);
+    return new MyViewHolder(view, dateFormat);
   }
 
   @Override
-  public void onBindViewHolder(final ViewHolder holder, int position) {
+  public void onBindViewHolder(final MyViewHolder holder, int position) {
     holder.bind(position, cars.get(position));
   }
 
@@ -70,7 +74,7 @@ public class VehicleRecyclerAdapter
     return cars.size();
   }
 
-  class ViewHolder extends RecyclerView.ViewHolder {
+  class MyViewHolder extends RecyclerView.ViewHolder {
 
     final TextView make;
     final TextView model;
@@ -78,7 +82,7 @@ public class VehicleRecyclerAdapter
     final TextView date;
     final DateFormat format;
 
-    private ViewHolder(View view, DateFormat format) {
+    private MyViewHolder(View view, DateFormat format) {
       super(view);
       make = (TextView) view.findViewById(R.id.make);
       model = (TextView) view.findViewById(R.id.model);
@@ -92,7 +96,16 @@ public class VehicleRecyclerAdapter
       model.setText(car.getModel());
       year.setText(Integer.toString(car.getYear()));
       date.setText(format.format(car.getAcquisition()));
+      itemView.setOnClickListener((v) -> listener.onClick(v, car,  position));
+
     }
+  }
+
+  @FunctionalInterface
+  public interface OnClickListener {
+
+    void onClick(View view, Car car, int position);
 
   }
+
 }

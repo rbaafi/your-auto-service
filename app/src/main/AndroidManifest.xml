@@ -14,7 +14,7 @@
     tools:ignore="GoogleAppIndexingWarning">
     <activity
       android:label="@string/title_vehicle_list"
-      android:name=".content.VehicleListActivity"
+      android:name=".controller.VehicleListActivity"
       android:theme="@style/AppTheme.NoActionBar">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -24,12 +24,12 @@
     </activity>
     <activity
       android:label="@string/title_vehicle_detail"
-      android:name=".content.VehicleDetailActivity"
-      android:parentActivityName=".content.VehicleListActivity"
+      android:name=".controller.VehicleDetailActivity"
+      android:parentActivityName=".controller.VehicleListActivity"
       android:theme="@style/AppTheme.NoActionBar">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
-        android:value="edu.cnm.deepdive.yourautoservice.content.VehicleListActivity"/>
+        android:value="edu.cnm.deepdive.yourautoservice.controller.VehicleListActivity"/>
     </activity>
   </application>
 

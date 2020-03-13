@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/vehicle_detail"
-  style="?android:attr/textAppearanceLarge"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:padding="16dp"
-  android:textIsSelectable="true"
-  tools:context=".content.VehicleDetailFragment"/>
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  tools:context=".controller.VehicleDetailFragment">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/subject_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:hintEnabled="true"
+      app:hintAnimationEnabled="true"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Subject"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/text_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:hintEnabled="true"
+      app:hintAnimationEnabled="true"
+      app:layout_constraintTop_toBottomOf="@id/subject_layout"
+      app:layout_constraintStart_toStartOf="parent">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="3"
+        android:maxLines="6"
+        android:inputType="textMultiLine"
+        android:hint="Text of note"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

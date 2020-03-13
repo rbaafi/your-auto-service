@@ -12,15 +12,15 @@ import java.util.List;
 public class VehicleViewModel extends AndroidViewModel {
 
   private CarRepository repository;
-  private MutableLiveData<Car> note;
-  private MutableLiveData<Car> throwable;
+  private MutableLiveData<Car> car;
+  private MutableLiveData<Throwable> throwable;
   // TODO Declare and use a CompositeDisposable
 
   public VehicleViewModel(@NonNull Application application) {
     super(application);
     repository = new CarRepository(application);
     LiveData<Object> car = new MutableLiveData<>();
-    throwable = new MutableLiveData<Car>();
+    throwable = new MutableLiveData<Throwable>();
   }
 
   public LiveData<List<Car>> getAll() {
@@ -28,27 +28,27 @@ public class VehicleViewModel extends AndroidViewModel {
     return repository.getAll();
   }
 
-  public LiveData<Car> getNote() {
+  public LiveData<Car> getCar() {
     LiveData<Car> car = new MutableLiveData<>();
     return car;
   }
 
-  public LiveData<Car> getThrowable() {
+  public LiveData<Throwable> getThrowable() {
     return throwable;
   }
 
-  public void setNoteId(long id) {
+  public void setCarId(long id) {
     throwable.setValue(null);
     repository.get(id);
   }
 
   public void save(Car car) {
-    throwable.setValue(car);
+    throwable.setValue(null);
     repository.save(car);
   }
 
   public void remove(Car car) {
-    throwable.setValue(car);
+    throwable.setValue(null);
     repository.remove(car);
   }
 

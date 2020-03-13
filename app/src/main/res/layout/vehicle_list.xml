@@ -9,5 +9,5 @@
   android:layout_marginRight="16dp"
   android:name="edu.cnm.deepdive.yourautoservice.controller.VehicleListFragment"
   app:layoutManager="LinearLayoutManager"
-  tools:context=".content.VehicleListActivity"
+  tools:context=".controller.VehicleListActivity"
   tools:listitem="@layout/vehicle_list_content"/>

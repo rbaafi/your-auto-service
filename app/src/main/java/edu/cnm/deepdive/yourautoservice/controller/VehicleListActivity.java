@@ -1,7 +1,6 @@
-package edu.cnm.deepdive.yourautoservice.content;
+package edu.cnm.deepdive.yourautoservice.controller;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,11 +10,8 @@ import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 import edu.cnm.deepdive.yourautoservice.R;
 
-import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter;
 import edu.cnm.deepdive.yourautoservice.viewmodel.VehicleViewModel;
-import java.text.DateFormat;
-import java.util.List;
 
 /**
  * An activity representing a list of Vehicles. This activity has different presentations for
@@ -29,6 +25,8 @@ public class VehicleListActivity extends AppCompatActivity {
    * Whether or not the activity is in two-pane mode, i.e. running on a tablet device.
    */
   private boolean mTwoPane;
+  private RecyclerView vehicleList;
+  private VehicleViewModel viewModel;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +37,16 @@ public class VehicleListActivity extends AppCompatActivity {
     setSupportActionBar(toolbar);
     toolbar.setTitle(getTitle());
 
-    FloatingActionButton fab = findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
-      }
-    });
+//    vehicleList = findViewById(R.id.vehicle_list);
+//    vehicleList.setOnClickListener((parent, view, position, id) -> {
+//      long noteId = ((Note) notesList.getItemAtPosition(position)).getId();
+//      showDetails(noteId);
+//    });
+//    notesList.setOnItemLongClickListener((parent, view, position, id) -> {
+//      // TODO Pop up a context menu, to allow removal of a Note instance.
+//      return true;
+//    });
+
 
     if (findViewById(R.id.vehicle_detail_container) != null) {
       // The detail container view will be present only in the

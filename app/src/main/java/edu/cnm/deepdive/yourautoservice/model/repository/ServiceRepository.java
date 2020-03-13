@@ -14,18 +14,20 @@ public class ServiceRepository {
     }
     database = VehicleDatabase.getInstance();
   }
+
   public VehicleDatabase getDatabase() {
     return database;
   }
+
   public static Application getContext() {
     return context;
   }
+
   public static void setContext(Application context) {
     ServiceRepository.context = context;
   }
+
   private static class InstanceHolder {
     private static final ServiceRepository INSTANCE = new ServiceRepository();
   }
-
-
 }
