@@ -2,4 +2,6 @@
   <string name="app_name">Your Auto Service</string>
   <string name="title_vehicle_list">Vehicles</string>
   <string name="title_vehicle_detail">Vehicle Detail</string>
+  <string name="text_of_note">Text of note</string>
+  <string name="subject">Subject</string>
 </resources>

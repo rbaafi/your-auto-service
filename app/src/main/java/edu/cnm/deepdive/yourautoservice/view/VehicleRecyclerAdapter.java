@@ -22,7 +22,7 @@ public class VehicleRecyclerAdapter
   private final DateFormat dateFormat;
   private final boolean mTwoPane;
 //  private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-
+//
 //    @Override
 //    public void onClick(View view) {
 //      CarItem item = (CarItem) view.getTag();
@@ -80,10 +80,12 @@ public class VehicleRecyclerAdapter
 
     private MyViewHolder(View view) {
       super(view);
-      make = (TextView) view.findViewById(R.id.make);
-      model = (TextView) view.findViewById(R.id.model);
-      year = (TextView) view.findViewById(R.id.year);
-      date = (TextView) view.findViewById(R.id.date);
+      view.setOnClickListener((View.OnClickListener) listener);
+      view.setTag(null);
+      make = view.findViewById(R.id.make);
+      model = view.findViewById(R.id.model);
+      year = view.findViewById(R.id.year);
+      date = view.findViewById(R.id.date);
     }
 
     private void bind(int position, Car car) {
@@ -92,7 +94,6 @@ public class VehicleRecyclerAdapter
       year.setText(Integer.toString(car.getYear()));
       date.setText(dateFormat.format(car.getAcquisition()));
       itemView.setOnClickListener((v) -> listener.onClick(v, car,  position));
-
     }
   }
 

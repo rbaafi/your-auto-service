@@ -1,19 +1,21 @@
 package edu.cnm.deepdive.yourautoservice.controller;
 
 import android.os.Bundle;
-import android.widget.Spinner;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import android.view.View;
 import edu.cnm.deepdive.yourautoservice.R;
-
+import edu.cnm.deepdive.yourautoservice.controller.DateTimePickerFragment.Mode;
+import edu.cnm.deepdive.yourautoservice.model.entity.Action;
 import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter;
 import edu.cnm.deepdive.yourautoservice.viewmodel.VehicleViewModel;
+import java.util.Calendar;
 
 /**
  * An activity representing a list of Vehicles. This activity has different presentations for
@@ -21,19 +23,25 @@ import edu.cnm.deepdive.yourautoservice.viewmodel.VehicleViewModel;
  * touched, lead to a {@link VehicleDetailActivity} representing item details. On tablets, the
  * activity presents the list of items and item details side-by-side using two vertical panes.
  */
-public class VehicleListActivity extends AppCompatActivity {
+public class VehicleListActivity extends AppCompatActivity implements DateTimePickerFragment.OnChangeListener {
 
   /**
    * Whether or not the activity is in two-pane mode, i.e. running on a tablet device.
    */
   private boolean mTwoPane;
+  private NavController navController;
   private RecyclerView vehicleList;
+  private Calendar calendar;
   private VehicleViewModel viewModel;
+  private ProgressBar loading;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_vehicle_list);
+    loading = findViewById(R.id.loading);
+    setupCalendarPicker();
+
 
 //    Spinner spinner = findViewById(R.id.vehicle_list);
 
@@ -73,4 +81,17 @@ public class VehicleListActivity extends AppCompatActivity {
     });
   }
 
+  private void setupCalendarPicker() {
+    calendar = Calendar.getInstance();
+    FloatingActionButton calendarFab = findViewById(R.id.calendar_fab);
+    calendarFab.setOnClickListener((v) -> {
+      DateTimePickerFragment fragment = DateTimePickerFragment.createInstance(Mode.DATE, calendar);
+      fragment.show(getSupportFragmentManager(), fragment.getClass().getName());
+    });
+  }
+
+  @Override
+  public void onChange(Calendar calendar) {
+    
+  }
 }
