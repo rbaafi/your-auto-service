@@ -92,6 +92,6 @@ public class VehicleListActivity extends AppCompatActivity implements DateTimePi
 
   @Override
   public void onChange(Calendar calendar) {
-    
+
   }
 }
