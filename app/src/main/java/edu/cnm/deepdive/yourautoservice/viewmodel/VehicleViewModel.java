@@ -5,13 +5,16 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import edu.cnm.deepdive.yourautoservice.model.entity.AvailableCar;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
+import edu.cnm.deepdive.yourautoservice.model.repository.AvailableCarRepository;
 import edu.cnm.deepdive.yourautoservice.model.repository.CarRepository;
 import java.util.List;
 
 public class VehicleViewModel extends AndroidViewModel {
 
   private CarRepository repository;
+  private AvailableCarRepository acRepository;
   private MutableLiveData<Car> car;
   private MutableLiveData<Throwable> throwable;
   // TODO Declare and use a CompositeDisposable
@@ -19,6 +22,7 @@ public class VehicleViewModel extends AndroidViewModel {
   public VehicleViewModel(@NonNull Application application) {
     super(application);
     repository = new CarRepository(application);
+    acRepository = new AvailableCarRepository(application);
     LiveData<Object> car = new MutableLiveData<>();
     throwable = new MutableLiveData<Throwable>();
   }
@@ -52,8 +56,11 @@ public class VehicleViewModel extends AndroidViewModel {
     repository.remove(car);
   }
 
-
   public LiveData<List<Car>> getCars() {
     return repository.getAll();
+  }
+
+  public LiveData<List<String>> getMakes() {
+    return acRepository.getMakes();
   }
 }

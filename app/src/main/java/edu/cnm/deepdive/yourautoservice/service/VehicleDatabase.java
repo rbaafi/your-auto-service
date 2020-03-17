@@ -21,10 +21,11 @@ import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.model.entity.Service;
 import edu.cnm.deepdive.yourautoservice.service.VehicleDatabase.Converters;
 import io.reactivex.schedulers.Schedulers;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -98,16 +99,39 @@ public abstract class VehicleDatabase extends RoomDatabase {
           Reader reader = new InputStreamReader(input);
       ) {
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
-        List<AvailableCar> cars = new LinkedList<>();
+        List<AvailableCar> availableCars = new LinkedList<>();
         for (CSVRecord record : records) {
           Log.d(getClass().getName(), record.toString());
           AvailableCar car = new AvailableCar();
           car.setMake(record.get("make"));
           car.setModel(record.get("model"));
           car.setYear(Integer.parseInt(record.get("year")));
-          cars.add(car);
+          availableCars.add(car);
         }
-        VehicleDatabase.getInstance().getAvailableCarDao().insert(cars)
+        VehicleDatabase.getInstance().getAvailableCarDao().insert(availableCars)
+            .subscribeOn(Schedulers.io())
+            .subscribe();
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        List<Car> cars = new LinkedList<>();
+        Car car = new Car();
+        car.setMake("Toyota");
+        car.setModel("Corolla");
+        car.setYear(2020);
+        car.setAcquisition(format.parse("2020-01-01"));
+        cars.add(car);
+        car = new Car();
+        car.setMake("Hyundai");
+        car.setModel("Sonato");
+        car.setYear(2020);
+        car.setAcquisition(format.parse("2020-01-01"));
+        cars.add(car);
+        car = new Car();
+        car.setMake("Tesla");
+        car.setModel("SModel");
+        car.setYear(2020);
+        car.setAcquisition(format.parse("2020-01-01"));
+        cars.add(car);
+        VehicleDatabase.getInstance().getCarDao().insert(cars)
             .subscribeOn(Schedulers.io())
             .subscribe();
       } catch (Exception e) {

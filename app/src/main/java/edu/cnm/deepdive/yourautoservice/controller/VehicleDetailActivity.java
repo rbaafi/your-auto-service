@@ -29,8 +29,6 @@ public class VehicleDetailActivity extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
       }
     });
 
@@ -39,6 +37,8 @@ public class VehicleDetailActivity extends AppCompatActivity {
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true);
     }
+
+
 
     // savedInstanceState is non-null when there is fragment state
     // saved from previous configurations of this activity

@@ -1,41 +1,33 @@
 package edu.cnm.deepdive.yourautoservice.model.repository;
 
 import android.app.Application;
+import android.content.Context;
 import android.renderscript.Sampler.Value;
+import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.yourautoservice.service.VehicleDatabase;
+import io.reactivex.Single;
 import java.security.Key;
+import java.util.List;
 
 public class AvailableCarRepository {
 
 
   private final VehicleDatabase database;
-  private static Application context;
+  private final Context context;
 
-  private AvailableCarRepository() {
-    if (context == null) {
-      throw new IllegalStateException();
-    }
-    database = VehicleDatabase.getInstance();
+  public AvailableCarRepository(Context context) {
+     database = VehicleDatabase.getInstance();
+     this.context = context;
   }
 
-  public VehicleDatabase getDatabase() {
-    return database;
+  public LiveData<List<String>> getMakes() {
+    return database.getAvailableCarDao().selectMakes();
   }
 
-  public static Application getContext() {
-    return context;
+  public LiveData<List<String>> getModels(String make) {
+    return database.getAvailableCarDao().selectModels(make);
   }
 
-  public static void setContext(Application context) {
-    AvailableCarRepository.context = context;
-  }
-
-
-
-  private static class InstanceHolder {
-
-    private static final AvailableCarRepository INSTANCE = new AvailableCarRepository();
-  }
 
 
 // TODO Needs to provided list of  makes, models and years.

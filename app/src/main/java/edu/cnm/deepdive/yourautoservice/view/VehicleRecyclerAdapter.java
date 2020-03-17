@@ -80,7 +80,6 @@ public class VehicleRecyclerAdapter
 
     private MyViewHolder(View view) {
       super(view);
-      view.setOnClickListener((View.OnClickListener) listener);
       view.setTag(null);
       make = view.findViewById(R.id.make);
       model = view.findViewById(R.id.model);

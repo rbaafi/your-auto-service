@@ -85,8 +85,7 @@ public class VehicleListActivity extends AppCompatActivity implements DateTimePi
     calendar = Calendar.getInstance();
     FloatingActionButton calendarFab = findViewById(R.id.calendar_fab);
     calendarFab.setOnClickListener((v) -> {
-      DateTimePickerFragment fragment = DateTimePickerFragment.createInstance(Mode.DATE, calendar);
-      fragment.show(getSupportFragmentManager(), fragment.getClass().getName());
+      showDetails(0);
     });
   }
 
@@ -94,4 +93,12 @@ public class VehicleListActivity extends AppCompatActivity implements DateTimePi
   public void onChange(Calendar calendar) {
 
   }
+
+
+
+  private void showDetails(long carId) {
+    CarFragment fragment = CarFragment.createInstance(carId);
+    fragment.show(getSupportFragmentManager(), fragment.getClass().getName());
+  }
+
 }
