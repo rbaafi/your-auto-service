@@ -17,7 +17,7 @@ import com.google.gson.annotations.SerializedName;
         )
     }
 )
-public class Action {
+public class Action implements History {
 
   @ColumnInfo(name = "action_id")
   @PrimaryKey(autoGenerate = true)

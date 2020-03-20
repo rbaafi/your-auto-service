@@ -17,7 +17,7 @@ import java.util.Date;
         )
     }
 )
-public class Service {
+public class Service implements History {
 
   @ColumnInfo(name = "service_id")
   @PrimaryKey(autoGenerate = true)
