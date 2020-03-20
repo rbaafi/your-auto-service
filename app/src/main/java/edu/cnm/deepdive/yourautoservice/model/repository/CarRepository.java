@@ -7,6 +7,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.service.VehicleDatabase;
+import io.reactivex.Completable;
+import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 import java.util.List;
 
 public class CarRepository {
@@ -23,16 +26,30 @@ public class CarRepository {
     return database.getCarDao().select();
   }
 
-  public MediaBrowser get(long id) {
-    return null;
+  public Single<Car> get(long id) {
+    return database.getCarDao().select(id)
+        .subscribeOn(Schedulers.io());
   }
 
-  public MediaBrowser save(Car car) {
-    return null;
+  public Completable save(Car car) {
+    if (car.getId() == 0) {
+      return Completable.fromSingle(
+          database.getCarDao().insert(car)
+              .subscribeOn(Schedulers.io())
+      );
+    } else {
+      return Completable.fromSingle(
+          database.getCarDao().update(car)
+              .subscribeOn(Schedulers.io())
+      );
+    }
   }
 
-  public MediaBrowser remove(Car car) {
-    return null;
+  public Completable remove(Car car) {
+    return Completable.fromSingle(
+        database.getCarDao().delete(car)
+            .subscribeOn(Schedulers.io())
+    );
   }
 
 }

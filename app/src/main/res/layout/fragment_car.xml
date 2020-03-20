@@ -79,8 +79,13 @@
         android:id="@+id/acquisition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:hint="@string/date_of_acquisition"/>
+        android:inputType="none"
+        android:clickable="true"
+        android:editable="false"
+        android:drawableEnd="@drawable/ic_today_black_24dp"
+        android:drawablePadding="5dp"
+        android:hint="@string/date_of_acquisition"
+        android:focusable="true"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.yourautoservice.view;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,20 +8,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.yourautoservice.R;
-import edu.cnm.deepdive.yourautoservice.controller.VehicleListActivity;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
-import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter.MyViewHolder;
+import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter.CarHolder;
 import java.text.DateFormat;
 import java.util.List;
 
 public class VehicleRecyclerAdapter
-    extends RecyclerView.Adapter<MyViewHolder> {
+    extends RecyclerView.Adapter<CarHolder> {
 
+  private final Context context;
   private final OnClickListener listener;
-  private final VehicleListActivity mParentActivity;
   private final List<Car> cars;
   private final DateFormat dateFormat;
-  private final boolean mTwoPane;
+
 //  private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
 //
 //    @Override
@@ -44,25 +44,24 @@ public class VehicleRecyclerAdapter
 //    }
 //  };
 
-  public VehicleRecyclerAdapter(VehicleListActivity parent,
-      OnClickListener listener, List<Car> cars, boolean twoPane) {
+  public VehicleRecyclerAdapter(Context context,
+      OnClickListener listener, List<Car> cars) {
+    this.context = context;
     this.cars = cars;
-    mParentActivity = parent;
     this.listener = listener;
-    mTwoPane = twoPane;
-    dateFormat = android.text.format.DateFormat.getMediumDateFormat(parent);
+    dateFormat = android.text.format.DateFormat.getMediumDateFormat(context);
   }
 
   @Override
   @NonNull
-  public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    View view = LayoutInflater.from(parent.getContext())
+  public CarHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    View view = LayoutInflater.from(context)
         .inflate(R.layout.vehicle_list_content, parent, false);
-    return new MyViewHolder(view);
+    return new CarHolder(view);
   }
 
   @Override
-  public void onBindViewHolder(final MyViewHolder holder, int position) {
+  public void onBindViewHolder(final CarHolder holder, int position) {
     holder.bind(position, cars.get(position));
   }
 
@@ -71,16 +70,15 @@ public class VehicleRecyclerAdapter
     return cars.size();
   }
 
-  class MyViewHolder extends RecyclerView.ViewHolder {
+  class CarHolder extends RecyclerView.ViewHolder {
 
     final TextView make;
     final TextView model;
     final TextView year;
     final TextView date;
 
-    private MyViewHolder(View view) {
+    private CarHolder(View view) {
       super(view);
-      view.setTag(null);
       make = view.findViewById(R.id.make);
       model = view.findViewById(R.id.model);
       year = view.findViewById(R.id.year);

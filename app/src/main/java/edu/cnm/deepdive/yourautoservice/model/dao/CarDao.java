@@ -22,11 +22,15 @@ public interface CarDao {
   Single<List<Long>> insert(Collection<Car> cars);
 
   @Update
-  Single<Integer> update(Car cars);
+  Single<Integer> update(Car... cars);
 
   @Delete
   Single<Integer> delete(Car... cars);
 
-  @Query("SELECT * FROM Car ORDER BY make, model, year")
+  @Query("SELECT * FROM Car ORDER BY acquisition DESC")
   LiveData<List<Car>> select();
+
+  @Query("SELECT * FROM Car WHERE car_id = :id")
+  Single<Car> select(long id);
+
 }

@@ -3,6 +3,8 @@ package edu.cnm.deepdive.yourautoservice.controller;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -18,16 +20,19 @@ import android.view.ViewGroup;
 
 import androidx.lifecycle.ViewModelProvider;
 import edu.cnm.deepdive.yourautoservice.R;
+import edu.cnm.deepdive.yourautoservice.controller.DateTimePickerFragment.Mode;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.viewmodel.VehicleViewModel;
 import java.text.DateFormat;
 import java.time.Year;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CarFragment extends DialogFragment {
+public class CarFragment extends DialogFragment
+    implements TextWatcher, DateTimePickerFragment.OnChangeListener {
 
   private static final String ID_KEY = "id";
 
@@ -63,9 +68,16 @@ public class CarFragment extends DialogFragment {
   public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
     view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_car, null, false);
     make = view.findViewById(R.id.make);
+    make.addTextChangedListener(this);
     model = view.findViewById(R.id.model);
     year = view.findViewById(R.id.year);
     acquisition = view.findViewById(R.id.acquisition);
+    acquisition.setOnClickListener((v) -> {
+      Calendar cal = Calendar.getInstance();
+      cal.setTime(date);
+      DateTimePickerFragment fragment = DateTimePickerFragment.createInstance(Mode.DATE, cal);
+      fragment.show(getChildFragmentManager(), fragment.getClass().getName());
+    });
     format = android.text.format.DateFormat.getDateFormat(getContext());
     return new AlertDialog.Builder(getContext())
         .setTitle("Select your Car")
@@ -90,18 +102,48 @@ public class CarFragment extends DialogFragment {
       make.setText(car.getMake());
       model.setText(car.getModel());
       year.setText(Integer.toString(car.getYear()));
-      date = car.getAcquisition();
-      acquisition.setText(format.format(date));
+      setDate(car.getAcquisition());
     });
     viewModel.getMakes().observe(getViewLifecycleOwner(), (makes) -> {
       ArrayAdapter<String> adapter =
           new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, makes);
       make.setAdapter(adapter);
     });
+    viewModel.getModels().observe(getViewLifecycleOwner(), (models) -> {
+      ArrayAdapter<String> adapter =
+          new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, models);
+      model.setAdapter(adapter);
+    });
     if (id != 0) {
       viewModel.setCarId(id);
     } else {
       car = new Car();
+      setDate(new Date());
     }
+  }
+
+  @Override
+  public void onChange(Calendar calendar) {
+    setDate(calendar.getTime());
+  }
+
+  protected void setDate(Date date) {
+    this.date = date;
+    acquisition.setText(format.format(date));
+  }
+
+  @Override
+  public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+  }
+
+  @Override
+  public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+  }
+
+  @Override
+  public void afterTextChanged(Editable s) {
+    viewModel.setMake(s.toString());
   }
 }
