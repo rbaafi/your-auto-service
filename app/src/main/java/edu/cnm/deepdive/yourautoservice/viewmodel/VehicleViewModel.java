@@ -10,6 +10,7 @@ import edu.cnm.deepdive.yourautoservice.model.entity.AvailableCar;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.model.repository.AvailableCarRepository;
 import edu.cnm.deepdive.yourautoservice.model.repository.CarRepository;
+import edu.cnm.deepdive.yourautoservice.model.repository.ServiceRepository;
 import java.util.List;
 
 public class VehicleViewModel extends AndroidViewModel {
@@ -69,6 +70,8 @@ public class VehicleViewModel extends AndroidViewModel {
             throwable::postValue
         );
   }
+
+
 
   public LiveData<List<Car>> getCars() {
     return repository.getAll();

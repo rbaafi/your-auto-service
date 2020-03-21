@@ -22,12 +22,15 @@ public interface ActionDao {
   Single<List<Long>> insert(Collection<Action> actions);
 
   @Update
-  Single<Integer> update(Action action);
+  Single<Integer> update(Action... actions);
 
   @Delete
-  Single<Integer> delete(Action... Action);
+  Single<Integer> delete(Action... actions);
 
-  @Query("SELECT * FROM `Action`")
-  LiveData<List<Action>> select();
+  @Query("SELECT * FROM `Action` WHERE service_id = :serviceId ORDER BY summary ASC")
+  LiveData<List<Action>> selectAll(long serviceId);
+
+  @Query("SELECT * FROM `Action` WHERE action_id = :actionId")
+  LiveData<Action> select(long actionId);
 
 }

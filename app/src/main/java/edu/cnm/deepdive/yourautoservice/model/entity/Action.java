@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverter;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(
@@ -17,7 +18,7 @@ import com.google.gson.annotations.SerializedName;
         )
     }
 )
-public class Action implements History {
+public class Action implements History, Comparable<Action> {
 
   @ColumnInfo(name = "action_id")
   @PrimaryKey(autoGenerate = true)
@@ -34,6 +35,7 @@ public class Action implements History {
 
   @ColumnInfo(collate = ColumnInfo.NOCASE, index = true)
   private String serviceType;
+
 
   public long getId() {
     return id;
@@ -73,5 +75,14 @@ public class Action implements History {
 
   public void setServiceType(String serviceType) {
     this.serviceType = serviceType;
+  }
+
+  public Service getServices() {
+    return null;
+  }
+
+  @Override
+  public int compareTo(Action other) {
+    return summary.compareToIgnoreCase(other.summary);
   }
 }

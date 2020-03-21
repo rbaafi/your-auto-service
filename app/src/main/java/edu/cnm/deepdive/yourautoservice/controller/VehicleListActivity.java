@@ -59,7 +59,7 @@ public class VehicleListActivity extends AppCompatActivity {
   private void showService(Car car) {
     if (twoPane) {
       Bundle arguments = new Bundle();
-      arguments.putLong(VehicleDetailFragment.ARG_ITEM_ID, car.getId());
+      arguments.putLong(VehicleDetailFragment.ID_KEY, car.getId());
       VehicleDetailFragment fragment = new VehicleDetailFragment();
       fragment.setArguments(arguments);
       getSupportFragmentManager().beginTransaction()
@@ -68,7 +68,7 @@ public class VehicleListActivity extends AppCompatActivity {
 
     } else {
         Intent intent = new Intent(this, VehicleDetailActivity.class);
-        intent.putExtra(VehicleDetailFragment.ARG_ITEM_ID, car.getId());
+        intent.putExtra(VehicleDetailFragment.ID_KEY, car.getId());
 
         startActivity(intent);
 

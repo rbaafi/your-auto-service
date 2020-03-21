@@ -79,7 +79,7 @@
         android:id="@+id/acquisition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="none"
+        android:minLines="3"
         android:clickable="true"
         android:editable="false"
         android:drawableEnd="@drawable/ic_today_black_24dp"
