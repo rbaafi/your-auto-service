@@ -1,12 +1,11 @@
 package edu.cnm.deepdive.yourautoservice.model.repository;
 
-import android.app.Application;
 import android.content.Context;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.yourautoservice.model.dao.ActionDao;
 import edu.cnm.deepdive.yourautoservice.model.dao.ServiceDao;
 import edu.cnm.deepdive.yourautoservice.model.entity.Action;
-import edu.cnm.deepdive.yourautoservice.model.entity.History;
+import edu.cnm.deepdive.yourautoservice.model.History;
 import edu.cnm.deepdive.yourautoservice.model.entity.Service;
 import edu.cnm.deepdive.yourautoservice.model.pojo.ServiceWithActions;
 import edu.cnm.deepdive.yourautoservice.service.VehicleDatabase;
@@ -14,7 +13,6 @@ import io.reactivex.Completable;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ServiceRepository {

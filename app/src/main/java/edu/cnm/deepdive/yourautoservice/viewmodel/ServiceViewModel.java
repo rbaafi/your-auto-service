@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import edu.cnm.deepdive.yourautoservice.model.entity.Action;
-import edu.cnm.deepdive.yourautoservice.model.entity.History;
+import edu.cnm.deepdive.yourautoservice.model.History;
 import edu.cnm.deepdive.yourautoservice.model.entity.Service;
 import edu.cnm.deepdive.yourautoservice.model.pojo.ServiceWithActions;
 import edu.cnm.deepdive.yourautoservice.model.repository.ServiceRepository;

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import edu.cnm.deepdive.yourautoservice.R;
 import edu.cnm.deepdive.yourautoservice.model.entity.Action;
-import edu.cnm.deepdive.yourautoservice.model.entity.History;
+import edu.cnm.deepdive.yourautoservice.model.History;
 import edu.cnm.deepdive.yourautoservice.model.entity.Service;
 import edu.cnm.deepdive.yourautoservice.model.pojo.ServiceWithActions;
 import edu.cnm.deepdive.yourautoservice.view.HistoryRecyclerAdapter.HistoryHolder;

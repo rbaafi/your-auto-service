@@ -6,6 +6,12 @@
 ### Summary
 * This app will have a add action functionality whereby users are able to add as many vehicles as they want from the main page. The main page will contain all vihicles added and with the list of vehicles will contain information added to it. When a vehicle is selected from the main page, it will have the user's input. For instance, it will contain the updated mileage and the date from when last serviced. The layout will be an elevation layout with an ok button. When the user select the ok button, the elavation layout will disappear to the main page where the rest of the list of vehicles added are.  
 
+### App current state
+* Users doesn't need to log in to use the app.
+* Users are able to select and add preferred vehicles. 
+* Users are able to log the date and mileage for the service.
+* Will be adding an option for users to get reminders for next service.
+
 ## Users will be able to select their car type and select the type service needed. 
 
 * List of all hyundai models. 
