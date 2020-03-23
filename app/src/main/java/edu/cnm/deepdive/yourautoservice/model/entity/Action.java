@@ -4,9 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 @Entity(
     foreignKeys = {
@@ -25,7 +22,7 @@ public class Action implements History, Comparable<Action> {
   private long id;
 
   @ColumnInfo(name = "service_id", index = true)
-  private long service;
+  private long serviceId;
 
   @ColumnInfo(collate = ColumnInfo.NOCASE, index = true)
   private String summary;
@@ -45,12 +42,12 @@ public class Action implements History, Comparable<Action> {
     this.id = id;
   }
 
-  public long getService() {
-    return service;
+  public long getServiceId() {
+    return serviceId;
   }
 
-  public void setService(long service) {
-    this.service = service;
+  public void setServiceId(long serviceId) {
+    this.serviceId = serviceId;
   }
 
   public String getSummary() {
@@ -77,9 +74,6 @@ public class Action implements History, Comparable<Action> {
     this.serviceType = serviceType;
   }
 
-  public Service getServices() {
-    return null;
-  }
 
   @Override
   public int compareTo(Action other) {

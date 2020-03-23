@@ -133,7 +133,39 @@ public abstract class VehicleDatabase extends RoomDatabase {
         cars.add(car);
         VehicleDatabase.getInstance().getCarDao().insert(cars)
             .subscribeOn(Schedulers.io())
-            .subscribe();
+            .map(
+                (ids) -> {
+                  List<Service> services = new LinkedList<>();
+                  for (long id : ids) {
+                    Service service = new Service();
+                    service.setCarId(id);
+                    service.setDate(new Date());
+                    service.setMileage(id * 100000);
+                    services.add(service);
+                  }
+                  return services;
+                }
+            )
+            .subscribe(
+                (services) -> VehicleDatabase.getInstance().getServiceDao().insert(services)
+                    .map((ids) -> {
+                          List<Action> actions = new LinkedList<>();
+                          for (long id : ids) {
+                            Action action = new Action();
+                            action.setServiceId(id);
+                            action.setServiceType("cars");
+                            action.setSummary("vehicles");
+                            actions.add(action);
+                          }
+                          return actions;
+                        }
+                    )
+                    .subscribe(
+                        (actions) -> VehicleDatabase.getInstance().getActionDao().insert(actions)
+                            .subscribe()
+
+                    )
+            );
       } catch (Exception e) {
         throw new RuntimeException(e);
       }

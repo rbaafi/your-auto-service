@@ -7,12 +7,14 @@ import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import edu.cnm.deepdive.yourautoservice.R;
+import edu.cnm.deepdive.yourautoservice.view.HistoryRecyclerAdapter;
 import edu.cnm.deepdive.yourautoservice.viewmodel.ServiceViewModel;
 
-public class VehicleDetailFragment extends DialogFragment {
+public class VehicleDetailFragment extends Fragment {
 
   public static final String ID_KEY = "id";
 
@@ -51,7 +53,8 @@ public class VehicleDetailFragment extends DialogFragment {
     viewModel = new ViewModelProvider(this).get(ServiceViewModel.class);
     viewModel.setCarId(carId);
     viewModel.getHistories().observe(getViewLifecycleOwner(), (histories) -> {
-      // TODO Create and populate recycler view adapter and attach to history list.
+      HistoryRecyclerAdapter adapter = new HistoryRecyclerAdapter(getContext(), histories);
+      historyList.setAdapter(adapter);
     });
   }
 }

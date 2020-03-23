@@ -25,8 +25,7 @@
     <activity
       android:label="@string/title_vehicle_detail"
       android:name=".controller.VehicleDetailActivity"
-      android:parentActivityName=".controller.VehicleListActivity"
-      android:theme="@style/AppTheme.NoActionBar">
+      android:parentActivityName=".controller.VehicleListActivity">
       <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value="edu.cnm.deepdive.yourautoservice.controller.VehicleListActivity"/>
