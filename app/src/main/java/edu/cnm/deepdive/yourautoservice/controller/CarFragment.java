@@ -106,12 +106,12 @@ public class CarFragment extends DialogFragment
     });
     viewModel.getMakes().observe(getViewLifecycleOwner(), (makes) -> {
       ArrayAdapter<String> adapter =
-          new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, makes);
+          new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, makes);
       make.setAdapter(adapter);
     });
     viewModel.getModels().observe(getViewLifecycleOwner(), (models) -> {
       ArrayAdapter<String> adapter =
-          new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, models);
+          new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, models);
       model.setAdapter(adapter);
     });
     if (id != 0) {

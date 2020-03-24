@@ -31,6 +31,6 @@ public interface CarDao {
   LiveData<List<Car>> select();
 
   @Query("SELECT * FROM Car WHERE car_id = :id")
-  Single<Car> select(long id);
+  LiveData<Car> select(long id);
 
 }

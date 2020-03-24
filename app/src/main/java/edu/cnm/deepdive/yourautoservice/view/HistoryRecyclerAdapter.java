@@ -109,19 +109,25 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryHolder> 
 
     private TextView serviceType;
     private TextView description;
+    private TextView summary;
+
 
     public ActionHolder(@NonNull View itemView) {
       super(itemView);
       serviceType = itemView.findViewById(R.id.service_type);
       description = itemView.findViewById(R.id.description);
+      summary = itemView.findViewById(R.id.summary);
     }
 
     @Override
     public void bind(int position, History history) {
       Action action = (Action) history;
-      serviceType.setText(dateFormat.format(action.getServiceType()));
-      description.setText(numberFormat.format(action.getDescription()));
+      serviceType.setText(action.getServiceType());
+      description.setText(action.getDescription());
+      summary.setText(action.getSummary());
     }
   }
+
+
 
 }

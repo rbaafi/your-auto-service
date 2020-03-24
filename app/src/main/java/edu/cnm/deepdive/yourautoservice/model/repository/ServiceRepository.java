@@ -37,6 +37,10 @@ public class ServiceRepository {
     return serviceDao.selectRelated(serviceId);
   }
 
+  public LiveData<Service> get(long serviceId) {
+    return serviceDao.select(serviceId);
+  }
+
   public LiveData<List<Action>> getAllActions(long serviceId) {
     return actionDao.selectAll(serviceId);
   }

@@ -1,7 +1,7 @@
 <resources>
   <string name="app_name">Your Auto Service</string>
   <string name="title_vehicle_list">Vehicles</string>
-  <string name="title_vehicle_detail">Vehicle Detail</string>
+  <string name="title_vehicle_detail">Service History</string>
   <string name="text_of_note">Text of note</string>
   <string name="subject">Subject</string>
 
@@ -11,4 +11,6 @@
   <string name="model_year">model year</string>
   <string name="model">model</string>
   <string name="date_of_acquisition">date of acquisition</string>
+  <string name="mileage">Mileage</string>
+  <string name="date_of_service">Date of service</string>
 </resources>

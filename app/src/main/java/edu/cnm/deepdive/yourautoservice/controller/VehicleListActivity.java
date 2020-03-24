@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import edu.cnm.deepdive.yourautoservice.R;
 import edu.cnm.deepdive.yourautoservice.model.entity.Car;
 import edu.cnm.deepdive.yourautoservice.view.VehicleRecyclerAdapter;
@@ -42,6 +43,11 @@ public class VehicleListActivity extends AppCompatActivity {
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     toolbar.setTitle(getTitle());
+    FloatingActionButton addCar = findViewById(R.id.add_car);
+    addCar.setOnClickListener((v) -> {
+      CarFragment fragment = CarFragment.createInstance(0);
+      fragment.show(getSupportFragmentManager(), fragment.getClass().getName());
+    });
 
     if (findViewById(R.id.vehicle_detail_container) != null) {
       twoPane = true;

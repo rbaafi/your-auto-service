@@ -34,7 +34,10 @@ public interface ServiceDao {
   Single<Integer> delete(Service... services);
 
   @Query("SELECT * FROM Service WHERE car_id = :carId")
-  LiveData<List<Service>> select(long carId);
+  LiveData<List<Service>> selectAll(long carId);
+
+  @Query("SELECT * FROM Service WHERE car_id = :serviceId")
+  LiveData<Service> select(long serviceId);
 
   @Transaction
   @Query("SELECT * FROM Service WHERE car_id = :carId")

@@ -30,11 +30,11 @@ public class ServiceViewModel extends AndroidViewModel {
     repository = new ServiceRepository(application);
     carId = new MutableLiveData<>();
     throwable = new MutableLiveData<>();
-    services = Transformations.switchMap(carId, (id) -> repository.getAllServices(id));
+    services = Transformations.switchMap(carId, repository::getAllServices);
     serviceId = new MutableLiveData<>();
-    service = Transformations.switchMap(serviceId, (id) -> repository.getService(id));
+    service = Transformations.switchMap(serviceId, repository::getService);
     actionId = new MutableLiveData<>();
-    action = Transformations.switchMap(actionId, (id) -> repository.getAction(id));
+    action = Transformations.switchMap(actionId, repository::getAction);
     histories = new MutableLiveData<>();
   }
 

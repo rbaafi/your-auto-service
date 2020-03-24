@@ -26,9 +26,8 @@ public class CarRepository {
     return database.getCarDao().select();
   }
 
-  public Single<Car> get(long id) {
-    return database.getCarDao().select(id)
-        .subscribeOn(Schedulers.io());
+  public LiveData<Car> get(long id) {
+    return database.getCarDao().select(id);
   }
 
   public Completable save(Car car) {
