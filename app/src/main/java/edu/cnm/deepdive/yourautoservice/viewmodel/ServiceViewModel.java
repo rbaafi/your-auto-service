@@ -83,7 +83,7 @@ public class ServiceViewModel extends AndroidViewModel {
   public  void save(Service service) {
     repository.save(service)
         .subscribe(
-            () -> {},
+            this::refreshHistories,
             throwable::postValue
         );
   }
@@ -91,7 +91,7 @@ public class ServiceViewModel extends AndroidViewModel {
   public  void save(Action action) {
     repository.save(action)
         .subscribe(
-            () -> {},
+            this::refreshHistories,
             throwable::postValue
         );
   }

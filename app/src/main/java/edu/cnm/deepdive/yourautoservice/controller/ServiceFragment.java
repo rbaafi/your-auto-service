@@ -103,6 +103,8 @@ public class ServiceFragment extends DialogFragment
       mileage.setText("0");
     }
 
+    viewModel.setCarId(carId);
+
   }
 
   private void save() {
